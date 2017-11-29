@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h1 class="yellow-text center">Eat-Da-Burger
+      </h1>
+    </div>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s8 m4 offset-m3">
+            <i class="material-icons prefix">mode_edit</i>
+            <input id="name" type='text' class="materialize-textarea yellow-text"></input>
+            <label for="name">Create your own</label>
+          </div>
+          <div class="input-field col s3">
+            <a class="btn-floating btn-large waves-effect waves-light yellow" for='name' id='summit'><i class="material-icons red-text">add</i></a>
+          </div>
+        </div>
+      </form>
+    </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <h2 class="red-text">Menu</h1>
+          <ul>
+            {{#each burgers}}
+              {{#unless devoured }}
+                {{> burgers/burger-block devoured=false}}
+              {{/unless}}
+            {{/each}}
+          </ul>
+        </div>
+        <div class="col s12 m6">
+          <h2 class="red-text">Previous orders</h1>
+          {{#each burgers}}
+            {{#if devoured }}
+              {{> burgers/burger-block devoured=true}}
+            {{/if}}
+          {{/each}}
+        </div>
+      </div>
+  </div>
+</div>
+<!--
+<div class="col s12 m6 offset-m3">
+  <img class="responsive-img center offset-s3" src="https://i.pinimg.com/originals/80/d8/8d/80d88dc14c4beca7615d7ec44c002cfd.gif" alt="eat me gif">
+</div>
+-->

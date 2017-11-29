@@ -1,0 +1,15 @@
+<div class="row">
+  <li class="col s12">
+    <h4 class="yellow-text col s8 m8 l6">{{burger_name}}</h4>
+      {{#if devoured}}
+      <div class="col s1"></div>
+        <div class="col s1">
+          <a class="btn-floating btn-small waves-effect waves-light yellow" data-id="{{id}}" data-devoured="{{devoured}}">
+             <i class="material-icons red-text">add</i>
+           </a>
+        </div>
+      {{else}}
+        <a href="#"><img class="devour col s4 m4 l4 responsive-img" data-id="{{id}}" data-devoured="{{devoured}}" src="https://i.pinimg.com/originals/80/d8/8d/80d88dc14c4beca7615d7ec44c002cfd.gif"></a>
+      {{/if}}
+  </li>
+</div>
