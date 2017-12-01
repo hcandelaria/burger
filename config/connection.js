@@ -1,13 +1,18 @@
 //Database package
 const mysql = require('mysql');
 //connection settings
-const connection = mysql.createConnection({
-  port: 3306,
-  host: 'localhost',
-  user: 'root',
-  password: '34646979',
-  database: 'burgers_db'
-});
+var connection;
+if(process.env.JAWSDB_URL){
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+}else{
+  connection = mysql.createConnection({
+    port: 3306,
+    host: 'localhost',
+    user: 'root',
+    password: '34646979',
+    database: 'burgers_db'
+  });
+};
 //Connect
 connection.connect(function(err){
   if(err){
