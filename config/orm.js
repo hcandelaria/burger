@@ -35,7 +35,7 @@ function objToSql(ob) {
   // translate array of strings to a single comma-separated string
   return arr.toString();
 }
-// Object for all our SQL statement functions.
+//orm
 var orm = {
   //tableInput table to return from db
   //cb function to be called after
@@ -54,7 +54,7 @@ var orm = {
   create: function(table, cols, vals, cb) {
 
     let queryString = `INSERT INTO ${table} (${cols.toString()})` +
-                      `VALUES (${printQuestionMarks(vals.length)})`;
+                      ` VALUES (${printQuestionMarks(vals.length)})`;
 
     connection.query(queryString, vals, function(err, result) {
       if (err) throw err;
@@ -68,8 +68,8 @@ var orm = {
   update: function(table, objColVals, condition, cb) {
 
     let queryString = `UPDATE ${table} SET ${objToSql(objColVals)}` +
-                      `WHERE ${condition}`;
-
+                      ` WHERE ${condition}`;
+    console.log(queryString);
     connection.query(queryString, function(err, result) {
       if (err) throw err;
       cb(result);

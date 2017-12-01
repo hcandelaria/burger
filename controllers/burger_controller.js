@@ -13,26 +13,26 @@ router.get('/',function(req,res){
 router.post('/api/burgers',function(req,res){
 
   let col = (['burger_name','devoured']);
-  let vals = ([req.body.name,req.body.sleepy]);
+  let vals = ([req.body.burger_name,req.body.devoured]);
 
-  burger.create(col,val,function(res){
-    res.json({ id : res.insertId});
+  burger.create(col,vals,function(result){
+    res.json({ id : result.insertId});
   });
 });
 router.put('/api/burgers/:id',function(req,res){
-  let col = { sleepy: req.body.sleepy };
+  let col = { devoured: req.body.devoured };
   let condition = ('id = ' + req.params.id);
 
-  burger.update(col, condition, function(res){
-    if(res.changedRows === 0) return res.status(404).end();
+  burger.update(col, condition, function(result){
+    if(result.changedRows === 0) return res.status(404).end();
     else res.status(200).end();
   });
 });
 router.delete('/api/burgers/:id',function(req,res){
   let condition = ('id = ' + req.params.id);
 
-  burger.delete(condition,function(res){
-    if(res.changedRows === 0 ) return res.status(404).end();
+  burger.delete(condition,function(result){
+    if(result.changedRows === 0 ) return res.status(404).end();
     else res.status(200).end();
   })
 
